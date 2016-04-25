@@ -746,6 +746,8 @@ them)?
 ## File System Layouts
 
 #### What are file system layouts used for?
+
+
 #### What are the general strategies?
 - Contiguous, linked, indexed?
 
@@ -811,6 +813,22 @@ original Unix file system?
 
 #### What are some crash recovery mechanisms?
 • What is fsck? What are its limitations?
+
+fsck is slow. that is its limitation.
+
+it does a bunch of things to check integrity of a disk.
+
+freeblocks: scan inodes. trust the inodes over the bitmap.
+
+inodes: looks for valid type
+
+links: traverse tree to find link counts. if there is an inode with no entry, move to l+f
+
+dupes: say two inodes point to the same block. either give one of them a copy, or remove the erroneous one. 
+
+bad blocks: see if there are any bad pointers in the inodes
+
+dir checks: make sure each have `.` and `..` entries. ensure the inodes are allocated. 
 
 #### How is journaling performed in modern file systems like ext3?
 
