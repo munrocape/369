@@ -664,12 +664,19 @@ history
 
 #### Why are TLBs effective?
 
+99% hit rate
+
 #### How are TLBs managed?
+
+os or hardware
 
 #### What happens on a TLB miss fault?
 
+
+
 #### What is the difference between a hardware and software managed TLB?
 
+flexibility of data structure, speed?
 
 ## Page Faults
 
@@ -838,8 +845,6 @@ dir checks: make sure each have `.` and `..` entries. ensure the inodes are allo
 
 #### Can we handle complete disk crashes? What’s the idea behind RAID?
 
-#### SSDs (probably not on the exam though, but highly relevant)
-
 
 ## Deadlocks
 
@@ -851,6 +856,34 @@ dir checks: make sure each have `.` and `..` entries. ensure the inodes are allo
 
 #### How does the Banker’s Algorithm work? Safe states? (again, revisit all tutorial exercises!)
 
+Bankers algo.
+
+You need: processes and their required resources, a number of max resources, and a current allocation of resources.
+
+There are two states: safe and unsafe
+
+you are safe if there is some allocation of the remaining free resources such that some process can reach its requirements, do its work, and then free them.
+
+You are unsafe if you cant - this means that you need to revoke resources or will never be able to satisfy requirements.
+
+drawbacks: need to know maximum, also assumption that everything is freed is difficult in practice.
+
 #### What is a resource allocation graph, what is it used for?
+
+resource allocation graphs are used to determine if deadlocks exist in a system.
+
+If a lock is owned by a proc, you draw a line from the LOCK to the PROC L_1 -> P_0
+
+If a lock is requested by a proc (waiting) you draw a line from the PROC to the LOCK P_0 -> L_3
+
+Do this for the system.
+
+Once done, if you can find a cycle, you have a deadlock.
+
+Ways to deal with it:
+
+reset entire system (costly)
+
+kill one proc, rebuild allocation graph, see if you are still deadlocked
 
 #### No questions on concurrent transactions on this topic
